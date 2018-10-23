@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 import CartHeader from './components/CartHeader'
 import CartFooter from './components/CartFooter'
 import CartItems from './components/CartItems'
@@ -23,9 +23,10 @@ class App extends Component {
     { id: 46, name: 'Intelligent Leather Clock', priceInCents: 2999 },
     { id: 47, name: 'Ergonomic Bronze Lamp', priceInCents: 40000 },
     { id: 48, name: 'Awesome Leather Shoes', priceInCents: 3990 },
-  ], 
-  value : "",
-  quantity: 0
+    ], 
+    value : "",
+    quantity: 0,
+    total: 3396
   }
 }
 handleChange = (e) => {
@@ -33,12 +34,13 @@ handleChange = (e) => {
 }
 handleQuantity = (e) => {
   this.setState({quantity: e.target.value})
-  console.log(this.state.quantity)
 }
 handleClick = (e) => {
   e.preventDefault()
   var price = this.state.products.filter(product => {
     if (this.state.value === product.name) {
+     this.state.total += product.priceInCents * this.state.quantity
+      console.log(this.state.total)
       return product.priceInCents
     }
   })
@@ -60,7 +62,7 @@ handleClick = (e) => {
       <div className="App">
         <CartHeader />
         <CartItems cartItemsList={this.state.cartItemsList} />
-        <AppItems value={this.state.value} quantity={this.state.quantity} products = {this.state.products} handleClick={this.handleClick} handleChange = {this.handleChange} handleQuantity = {this.handleQuantity} />
+        <AppItems value={this.state.value} total={this.state.total} quantity={this.state.quantity} products = {this.state.products} handleClick={this.handleClick} handleChange = {this.handleChange} handleQuantity = {this.handleQuantity} />
         <CartFooter />
       </div>
     );
