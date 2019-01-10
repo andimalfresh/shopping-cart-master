@@ -5,8 +5,10 @@ import CartFooter from './components/CartFooter'
 import CartItems from './components/CartItems'
 import AppItems from './components/AppItems'
 class App extends Component {
+  
+  
   constructor () {
-    super();
+      super()
   this.state = {
   cartItemsList : [
       { id: 1, product: { id: 40, name: 'Mediocre Iron Watch', priceInCents: 399 }, quantity: 1 },
@@ -65,8 +67,8 @@ handleClick = (e) => {
         <AppItems value={this.state.value} total={this.state.total} quantity={this.state.quantity} products = {this.state.products} handleClick={this.handleClick} handleChange = {this.handleChange} handleQuantity = {this.handleQuantity} />
         <CartFooter />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
